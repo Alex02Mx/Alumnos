@@ -1,0 +1,38 @@
+# --- DEPENDENCIAS ---
+# No subimos las carpetas de librerías porque son pesadas y se regeneran con npm install
+node_modules/
+/dist
+/build
+
+# --- SEGURIDAD (CRÍTICO) ---
+# Nunca subas tus credenciales de MariaDB o llaves secretas
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# --- ARCHIVOS DE BASE DE DATOS ---
+# Si usas algún dump de MariaDB o logs locales
+*.sql
+*.log
+mysql/
+data/
+
+# --- SISTEMA OPERATIVO Y EDITORES ---
+# Archivos basura de Windows
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# Archivos de configuración de VS Code
+.vscode/
+# Si usas IntelliJ o WebStorm
+.idea/
+
+# --- WSL / LINUX ---
+# Archivos temporales de edición
+*~
+.fuse_connection*
+.directory
+.DS_Store

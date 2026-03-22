@@ -1,0 +1,131 @@
+
+body{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(1, 1, 17);
+  color: white;
+}
+.titleHeader{
+  color: white;
+}
+.winTitle{
+  color: white;
+  font-weight: bold;
+  margin: 20px 0px 2px 0px;
+}
+.formCtn{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+}
+.form{
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  padding: 10px 20px 20px 20px;
+  border-radius: 10px;
+  background-color: rgb(12, 108, 187);
+}
+.inpWin{
+  border: 1px solid rgb(12, 108, 187);
+  border-radius: 5px;
+  cursor: text;
+  font-size: 1.2rem;
+  outline: none;
+}
+
+.inpWin:focus-visible{
+  border-color: rgb(7, 88, 155);
+}
+.btn{
+  margin: 30px 0px 10px 0px;
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid rgb(7, 88, 155);
+  cursor: pointer;
+  font-weight: bold;
+  background-color: rgb(7, 88, 155);
+  color: rgb(255, 255, 255);
+    transition: 
+    background .2s ease,
+    box-shadow .2s ease,
+    transform .1s ease;
+}
+.btn:hover{
+  background-color: transparent;
+  border: 1px solid rgb(79, 176, 255);
+  color: rgb(79, 176, 255);
+}
+.btn:active{
+  transform: scale(0.97);
+  background-color: rgb(7, 88, 155);  
+}
+
+.subTitle{
+  font-size: 1.5rem;
+  margin-bottom: 0;
+  color: rgb(221, 236, 253);
+  font-weight: bolt;
+}
+
+span{
+  color: rgb(15, 146, 253);
+  padding-left: 0px;
+}
+.listCtn{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+}
+
+.listRow{
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  background-color: rgba(4, 87, 143, 0.534);
+  padding: 8px 20px;
+  border-radius: 8px;
+  margin: 5px;
+  color: white;
+  width: 300px;
+}
+
+.crsTxt{
+  margin-left: 14px;
+}
+.btnStd{
+  border-radius: 8px;
+  border: 1px solid rgb(7, 88, 155);
+  background-color: rgb(7, 88, 155);
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+  font-weight: bold;
+  color: white;
+    transition: 
+    background .2s ease,
+    box-shadow .2s ease,
+    transform .1s ease;
+}
+.btnStd:active{
+  transform: scale(0.97);
+  background-color: rgb(7, 88, 155);    
+}
+.btnEdt:hover{
+  background-color: transparent;
+  border: 1px solid rgb(255, 208, 79);
+  color: rgb(255, 208, 79);
+  
+}
+.btnClr:hover{
+  background-color: transparent;
+  border: 1px solid rgb(255, 105, 79);
+  color: rgb(255, 105, 79);
+}
+/* "@vitejs/plugin-react": "^5.1.4",*/
