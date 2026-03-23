@@ -6,7 +6,7 @@ import SpinnerSmall from "../Spinner/SpinnerSmall";
 
 export default function AlumnoList({ 
                               alumnos, 
-                              onEdit,
+                              setEditingAlumno,
                               deleteAlumnoLocal, 
                               showMessage
                             }){
@@ -35,18 +35,18 @@ const handleConfirmDelete = async () => {
   }
 };
 
-  if(!alumnos.length){
-    return <p>No hay alumnos registrados</p>
-  }
+if(!alumnos.length){
+  return <p>No hay alumnos registrados</p>
+}
 
-  return (
+return (
     <>
       <ul>
         {alumnos.map(a => (
           <li key={a.id}>
             {a.name} — {a.course}
 
-            <button onClick={() => onEdit(a)}>
+            <button onClick={() => setEditingAlumno(a)}>
               Editar
             </button>
 
