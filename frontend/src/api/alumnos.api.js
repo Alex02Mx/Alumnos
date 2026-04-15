@@ -1,8 +1,5 @@
 import { apiFetch } from "./apiClient";
 
-// export const getAlumnos = () =>
-//   apiFetch("/alumnos");
-
 export const getAlumnos = ({ search = "", page = 1, limit = 5 } = {}) =>
   apiFetch(`/alumnos?search=${search}&page=${page}&limit=${limit}`);
 

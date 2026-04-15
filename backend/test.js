@@ -15,3 +15,4 @@ let variableVacia;
 let variableDatos = "Datos";
 
 console.log(variableVacia || "prueba");
+

@@ -2,13 +2,15 @@ import { useState, useEffect } from "react";
 import { getAlumnos, getDeletedAlumnos } from "../api/alumnos.api";
 
 export function useAlumnos(){
-
+  // === useState Arrays for Alunmos y DeletedAlumnos === //
   const [alumnos, setAlumnos] = useState([]);
   const [deletedAlumnos, setDeletedAlumnos] = useState([]);
 
+  // === useState boolean for Spinner === //
   const [initialLoading, setInitialLoading] = useState(true);
   const [fetching, setFetching] = useState(false);
 
+  // === useState strings for Search Debaunce === // 
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
 

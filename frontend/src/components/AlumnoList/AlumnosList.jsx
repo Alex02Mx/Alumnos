@@ -1,4 +1,3 @@
-
 import ConfirmModal from "../ConfirmModal/ConfirmModal";
 import { deleteAlumno } from "../../api/alumnos.api";
 import { useState } from "react";

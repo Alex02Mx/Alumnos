@@ -21,7 +21,7 @@ import "./Dashboard.css";
 export default function Dashboard(){
   const { logout, user} = useAuth();
  
-  // === custome Hook === //
+  // === custome Hook from useAlumnos.jsx === //
   const {
     alumnos,
     deletedAlumnos,

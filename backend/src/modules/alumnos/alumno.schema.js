@@ -39,3 +39,5 @@ export const paginationQuerySchema = z.object({
    order: z.enum(["asc","des"])
     .default("asc")
 })
+
+
