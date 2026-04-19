@@ -14,6 +14,9 @@ export function useAlumnos(){
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
 
+  // === useState estado para paginacion ===
+  const [totalPages, setTotalPages] = useState(1);
+
 
   const load = async () => {
     try {
@@ -26,7 +29,7 @@ export function useAlumnos(){
       });
 
       setAlumnos(res.data.data);
-
+      setTotalPages(res.data.pagination.totalPages);
     } catch (error) {
       console.error(error);
     } finally {
@@ -82,37 +85,17 @@ const updateAlumnoLocal = (updatedAlumno) => {
 };
 
 // eliminar alumno localmente
-const deleteAlumnoLocal = (id) => {
-  let alumnoEliminado = null;
+const deleteAlumnoLocal = async(id) => {
 
-  setAlumnos(prev => {
-    alumnoEliminado = prev.find(a => a.id === id);
-    return prev.filter(a => a.id !== id);
-  });
-
-  if (alumnoEliminado) {
-    setDeletedAlumnos(prev => [
-      { ...alumnoEliminado, deleted: 1 },
-      ...prev
-    ]);
-  }
+  await load();
+  await loadDeleted();
 };
 
 // restaurar alumno localmente
-const restoreAlumnoLocal = (id) => {
-  let alumnoRestaurado = null;
+const restoreAlumnoLocal = async(id) => {
 
-  setDeletedAlumnos(prev => {
-    alumnoRestaurado = prev.find(a => a.id === id);
-    return prev.filter(a => a.id !== id);
-  });
-
-  if (alumnoRestaurado) {
-    setAlumnos(prev => [
-      { ...alumnoRestaurado, deleted: 0 },
-      ...prev
-    ]);
-  }
+  await load();
+  await loadDeleted();
 };
 
   return {
@@ -121,6 +104,8 @@ const restoreAlumnoLocal = (id) => {
     //
     initialLoading,
     fetching,
+    //
+    totalPages,
     //
     addAlumno,
     updateAlumnoLocal,
@@ -133,4 +118,3 @@ const restoreAlumnoLocal = (id) => {
     setPage
   };
 }
-

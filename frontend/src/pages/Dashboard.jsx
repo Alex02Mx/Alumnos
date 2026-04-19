@@ -29,6 +29,8 @@ export default function Dashboard(){
     initialLoading,
     fetching,
     //
+    totalPages,
+    //
     addAlumno,
     updateAlumnoLocal,
     deleteAlumnoLocal,
@@ -118,13 +120,15 @@ export default function Dashboard(){
                   deleteAlumnoLocal={deleteAlumnoLocal}   // From useAlumnos Function
                   showMessage = {showMessage}/>   {/* Here Function */}
       <div>
-        <button onClick={() => setPage(p => Math.max(p - 1, 1))}>   {/* From useAlumnos state */}
+        <button onClick={() => setPage(p => Math.max(p - 1, 1))}   
+                disabled = {page === 1}> {/* From useAlumnos state */}
           Anterior
         </button>
 
-        <span>Página {page}</span>  {/* From useAlumnos state */}
+        <span>Página {page} de {totalPages}</span>  {/* From useAlumnos state */}
 
-        <button onClick={() => setPage(p => p + 1)}>   {/* From useAlumnos state */}
+        <button onClick={() => setPage(p => Math.min(p + 1, totalPages))}
+                disabled ={page === totalPages}>   {/* From useAlumnos state */}
           Siguiente
         </button>
       </div>
