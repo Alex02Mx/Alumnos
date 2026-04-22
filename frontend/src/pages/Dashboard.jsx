@@ -10,6 +10,8 @@ import AlumnoList from "../components/AlumnoList/AlumnosList";
 import Toast from "../components/Toast/Toast";
 import SpinnerPage from "../components/Spinner/SpinnerPage"
 import SpinnerSmall from "../components/Spinner/SpinnerSmall";
+import SearchBar from "../components/SearchBar/SearchBar";
+import Pagination from "../components/Pagination/Pagination"
 
 // === Import from context === //
 import { useAuth } from "../context/AuthContext";
@@ -42,17 +44,6 @@ export default function Dashboard(){
     setPage
   } = useAlumnos();  
   
-  // === Search Debaounce === //
-  const [searchInput, setSearchInput] = useState(search);  
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setSearch(searchInput); // From useAlumnos state
-      setPage(1);             // From useAlumnos state
-  }, 500);   // 500ms debounce
-    return () => clearTimeout(timeout);
-  }, [searchInput]);          // here state
-
   // === UseStates Here === //
   const [editingAlumno, setEditingAlumno] = useState(null);
   const [error, setError] = useState(null);
@@ -100,38 +91,22 @@ export default function Dashboard(){
         {fetching && <SpinnerSmall />} {/* From useAlumnos state */}
       </div>
 
-        <input
-          type="text"
-          placeholder="Buscar alumno..."
-          value={searchInput}   // Here state
-          onChange={(e) => setSearchInput(e.target.value)}  // Here state
-        />
+      <SearchBar
+          search={search}
+          setSearch={setSearch}
+          setPage={setPage}
+      />
 
-      <button onClick={() => {
-        setSearchInput("");   // Here state
-        setSearch("");   // From useAlumnos state
-        setPage(1);   // From useAlumnos state
-      }}>
-        Limpiar
-      </button>
-      
       <AlumnoList alumnos={alumnos}    // From useAlumnos state
                   setEditingAlumno={setEditingAlumno}   // Here state
                   deleteAlumnoLocal={deleteAlumnoLocal}   // From useAlumnos Function
                   showMessage = {showMessage}/>   {/* Here Function */}
-      <div>
-        <button onClick={() => setPage(p => Math.max(p - 1, 1))}   
-                disabled = {page === 1}> {/* From useAlumnos state */}
-          Anterior
-        </button>
 
-        <span>Página {page} de {totalPages}</span>  {/* From useAlumnos state */}
-
-        <button onClick={() => setPage(p => Math.min(p + 1, totalPages))}
-                disabled ={page === totalPages}>   {/* From useAlumnos state */}
-          Siguiente
-        </button>
-      </div>
+      <Pagination
+        page = {page}
+        setPage = {setPage}
+        totalPages = {totalPages}
+      />
 
       <h2>Lista de alumnos borrados</h2>
       <DeletedAlumnoList deletedAlumnos = {deletedAlumnos}   // From useAlumnos state

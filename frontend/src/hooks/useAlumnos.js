@@ -17,7 +17,6 @@ export function useAlumnos(){
   // === useState estado para paginacion ===
   const [totalPages, setTotalPages] = useState(1);
 
-
   const load = async () => {
     try {
       setFetching(true);
